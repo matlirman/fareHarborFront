@@ -2,7 +2,6 @@ import React, { useCallback, useState, useEffect, useRef } from "react";
 import './App.css';
 import Pusher from 'pusher-js';
 import axios from "axios"
-require('dotenv').config()
 
 
 function App() {
