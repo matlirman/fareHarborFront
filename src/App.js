@@ -2,6 +2,8 @@ import React, { useCallback, useState, useEffect, useRef } from "react";
 import './App.css';
 import Pusher from 'pusher-js';
 import axios from "axios"
+require('dotenv').config()
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState({})
@@ -62,8 +64,8 @@ function App() {
     }
   }, [channel])
 
-  const pusher = new Pusher(process.env.key, {
-    cluster: process.env.cluster,
+  const pusher = new Pusher(process.env.REACT_APP_key, {
+    cluster: "us2",
     authEndpoint: "https://fareharborback.onrender.com/pusher/auth",
   });
 
