@@ -63,7 +63,7 @@ function App() {
   }, [channel])
 
   const pusher = new Pusher(process.env.key, {
-    cluster: process.env.cluster,,
+    cluster: process.env.cluster,
     authEndpoint: "https://fareharborback.onrender.com/pusher/auth",
   });
 
