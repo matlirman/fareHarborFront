@@ -62,15 +62,15 @@ function App() {
     }
   }, [channel])
 
-  // const pusher = new Pusher(process.env.REACT_APP_key, {
-  //   cluster: "us2",
-  //   authEndpoint: "https://fareharborback.onrender.com/pusher/auth",
-  // });
-
   const pusher = new Pusher(process.env.REACT_APP_key, {
     cluster: "us2",
-    authEndpoint: "http://localhost:8080/pusher/auth",
+    authEndpoint: "https://fareharborback.onrender.com/pusher/auth",
   });
+
+  // const pusher = new Pusher(process.env.REACT_APP_key, {
+  //   cluster: "us2",
+  //   authEndpoint: "http://localhost:8080/pusher/auth",
+  // });
 
   window.addEventListener("beforeunload", () => {
     pusher.unsubscribeAll();
