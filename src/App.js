@@ -12,6 +12,7 @@ function App() {
   const [page, setPage] = useState("login")
   const [channel, setChannel] = useState()
   const [mainChannelUsers, setMainChannelUsers] = useState([])
+  const [subscribedChannelName, setSubscribedChannelName] = useState()
 
 
   // Pusher.logToConsole = true;
@@ -82,6 +83,7 @@ function App() {
     let channelName = "presence-" + channelNameTemp
     const channel = pusher.subscribe(channelName)
     setChannel(channel)
+    setSubscribedChannelName(channelNameTemp)
     setPage("userPage")
   }
 
@@ -111,6 +113,9 @@ function App() {
               </p>
             </div>
             <div>
+              <p>
+                You are currently attached to channel: {subscribedChannelName}!
+              </p>
               <p>
                 Current Users viewing this page: {mainChannelUsers?.length}!
               </p>
