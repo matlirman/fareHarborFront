@@ -36,6 +36,7 @@ function App() {
         });
 
         channel.bind('newMember', function(data) {
+          console.log('new member should load', data)
           if (currentUserIDRef.current !== null){
             setMainChannelUsers(prevUsers => {
               let usersTemp = [...prevUsers]
@@ -76,8 +77,10 @@ function App() {
     pusher.unsubscribeAll();
   });
 
-  const login = async () => {
-    const channel = pusher.subscribe('presence-FH1')
+  const login = async (channelNameTemp) => {
+    console.log(channelNameTemp)
+    let channelName = "presence-" + channelNameTemp
+    const channel = pusher.subscribe(channelName)
     setChannel(channel)
     setPage("userPage")
   }
@@ -90,8 +93,11 @@ function App() {
               enter the booking area as a random user!
             </p>
             <br></br>
-            <button onClick={() => {login()}}>
-              Log me in!
+            <button onClick={() => {login("channel1")}}>
+              Channel1!
+            </button>
+            <button onClick={() => {login("channel2")}}>
+              Channel2!
             </button>
           </div>
           :
