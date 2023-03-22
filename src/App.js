@@ -16,7 +16,6 @@ function App() {
 
   // Pusher.logToConsole = true;
 
-
   useEffect(() => {
       if (channel){
         channel.bind('pusher:subscription_succeeded', members => {
@@ -63,9 +62,14 @@ function App() {
     }
   }, [channel])
 
+  // const pusher = new Pusher(process.env.REACT_APP_key, {
+  //   cluster: "us2",
+  //   authEndpoint: "https://fareharborback.onrender.com/pusher/auth",
+  // });
+
   const pusher = new Pusher(process.env.REACT_APP_key, {
     cluster: "us2",
-    authEndpoint: "https://fareharborback.onrender.com/pusher/auth",
+    authEndpoint: "http://localhost:8080/pusher/auth",
   });
 
   window.addEventListener("beforeunload", () => {
